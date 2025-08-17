@@ -1,13 +1,23 @@
-var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
-    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
-        if (ar || !(i in from)) {
-            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
-            ar[i] = from[i];
-        }
+// function isAnagram(s: string, t: string): boolean {
+//   if (s.length !== t.length) {
+//     return false;
+//   }
+//   const s1 = s.split("").sort().join();
+//   const s2 = t.split("").sort().join();
+//   if (s1 == s2) {
+//     return true;
+//   }
+//   return false;
+// }
+function isAnagram(s, t) {
+    if (s.length !== t.length) {
+        return false;
     }
-    return to.concat(ar || Array.prototype.slice.call(from));
-};
-function getConcatenation(nums) {
-    return __spreadArray(__spreadArray([], nums, true), nums, true);
+    var count = new Array(26).fill(0);
+    for (var i = 0; i < s.length; i++) {
+        count[s.charCodeAt(i) - "a".charCodeAt(0)]++;
+        count[t.charCodeAt(i) - "a".charCodeAt(0)]--;
+    }
+    return count.every(function (val) { return val === 0; });
 }
-console.log(getConcatenation([1, 2, 3]));
+console.log(isAnagram("anagam", "nagaram"));
