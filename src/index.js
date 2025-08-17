@@ -1,0 +1,13 @@
+function containsDuplicate(nums) {
+    var hashmap = new Set();
+    for (var i = 0; i < nums.length; i++) {
+        if (hashmap.has(nums[i])) {
+            return true;
+        }
+        hashmap.add(nums[i]);
+    }
+    return false;
+}
+//non-null assertion operator (!)
+var nums = [1, 2, 3];
+console.log(containsDuplicate(nums));
