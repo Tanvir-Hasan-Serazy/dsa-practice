@@ -1,23 +1,19 @@
-// function isAnagram(s: string, t: string): boolean {
-//   if (s.length !== t.length) {
-//     return false;
-//   }
-//   const s1 = s.split("").sort().join();
-//   const s2 = t.split("").sort().join();
-//   if (s1 == s2) {
-//     return true;
-//   }
-//   return false;
-// }
-function isAnagram(s, t) {
-    if (s.length !== t.length) {
-        return false;
+function longestCommonPrefix(strs) {
+    if (!strs.length) {
+        return "";
     }
-    var count = new Array(26).fill(0);
-    for (var i = 0; i < s.length; i++) {
-        count[s.charCodeAt(i) - "a".charCodeAt(0)]++;
-        count[t.charCodeAt(i) - "a".charCodeAt(0)]--;
+    strs.sort();
+    var first = strs[0];
+    var last = strs[strs.length - 1];
+    var result = "";
+    for (var i = 0; i < first.length; i++) {
+        if (first[i] === last[i]) {
+            result = result + first[i]; // result += first![i]
+        }
+        else {
+            break;
+        }
     }
-    return count.every(function (val) { return val === 0; });
+    return result;
 }
-console.log(isAnagram("anagam", "nagaram"));
+console.log(longestCommonPrefix(["bat", "bag", "bank", "band"]));
